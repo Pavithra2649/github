@@ -10,7 +10,7 @@ steps:
     publishWebProjects: true
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'appreg-apkk-dev-uks-01'
+    azureSubscription: 'sc-azsub1'
     appType: 'webAppLinux'
     appName: 'asapkkdev'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
