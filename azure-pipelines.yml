@@ -13,4 +13,13 @@ steps:
     azureSubscription: 'sc-azsub1'
     appType: 'webAppLinux'
     appName: 'asapkkdev'
+    deployToSlotOrASE: true
+    resourceGroupName: 'apkk'
+    slotName: 'asapapkktest'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'sc-azsub1'
+    appType: 'webAppLinux'
+    appName: 'asapkkdev'
     package: '$(System.DefaultWorkingDirectory)/**/*.zip'
