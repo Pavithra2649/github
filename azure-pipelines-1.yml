@@ -5,6 +5,11 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables: 
+  ## Add this under variables section in the pipeline
+  containerRegistry: 'Azureregistrypractice'
+  imageRepository: 'pavithra/webapp'
+  tag: '$(Build.BuildId)'
 
 steps:
 - task: Docker@2
@@ -13,6 +18,8 @@ steps:
     repository: 'pavithra/webapp'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+    tags: |
+       $(tag)
 - task: AzureWebAppContainer@1
   inputs:
     azureSubscription: 'sc-azsub1'
@@ -20,3 +27,4 @@ steps:
     deployToSlotOrASE: true
     resourceGroupName: 'apkk'
     slotName: 'appservicestaging'
+    containers: $(containerRegistry)/$(imageRepository):$(tag)
