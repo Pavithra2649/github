@@ -13,3 +13,10 @@ steps:
     repository: 'pavithra/webapp'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
+- task: AzureWebAppContainer@1
+  inputs:
+    azureSubscription: 'sc-azsub1'
+    appName: 'appservicepractice'
+    deployToSlotOrASE: true
+    resourceGroupName: 'apkk'
+    slotName: 'appservicestaging'
